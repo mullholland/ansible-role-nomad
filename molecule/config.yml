@@ -35,4 +35,3 @@ molecule_scenarios:
       - "amazonlinux"
       - "rockylinux8"
       - "almalinux8"
-
