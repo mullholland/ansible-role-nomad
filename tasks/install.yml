@@ -1,0 +1,19 @@
+---
+- name: Install nomad
+  ansible.builtin.package:
+    name: "{{ nomad_packages }}"
+    state: present
+
+- name: create nomad directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    mode: "0750"
+    owner: "{{ nomad_user }}"
+    group: "{{ nomad_group }}"
+    state: directory
+  with_items:
+    - "{{ nomad_bin_path }}"
+    - "{{ nomad_config_path }}"
+    - "{{ nomad_data_path }}"
+    - "{{ nomad_log_path }}"
+    - "{{ nomad_run_path }}"

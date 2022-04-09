@@ -1,0 +1,72 @@
+---
+# Is this server a nomad server?
+# agents need this as `false`
+nomad_server: true
+
+# Packages
+nomad_packages:
+  - nomad
+  # - nomad-enterprise
+
+# set nomad license variable
+# nomad_license: "12345679987654321"
+
+# bin to this address
+nomad_bind_address: "0.0.0.0"
+
+# System user and group (from package)
+nomad_user: "nomad"
+nomad_group: "nomad"
+
+# # Paths
+nomad_bin_path: "/usr/bin"
+nomad_config_path: "/etc/nomad.d"
+nomad_data_path: "/opt/nomad/data"
+nomad_log_path: "/var/log/nomad"
+nomad_run_path: "/var/run/nomad"
+
+# Create nomad configuration
+# Sections are only for your personal structure
+# they have no effect on the configuration
+nomad_config_sections:
+  - name: base
+    config: |
+      bind_addr = "{{ nomad_bind_address }}"
+      data_dir  = "{{ nomad_data_path }}"
+      name      = "{{ inventory_hostname }}"
+  - name: logging
+    config: |
+      log_level            = "INFO"
+      log_json             = false
+      log_file             = "{{ nomad_log_path }}/nomad.log"
+      log_rotate_duration  = "24h" # rotate after 24h
+      log_rotate_max_files = "7"   # keep 1 week worth of logs
+  - name: server
+    config: |
+      server {
+        enabled          = true
+        bootstrap_expect = 1  # Self-elect, should be 3 or 5 for production
+      }
+  - name: agent
+    config: |
+      client {
+        enabled = true
+        servers = [ "{{ inventory_hostname}}:4647" ]
+      }
+      # Disable the dangling container cleanup to avoid interaction with other clients
+      plugin "docker" {
+        config {
+          gc {
+            dangling_containers {
+              enabled = false
+            }
+          }
+        }
+      }
+  - name: telementry
+    config: |
+      telemetry {
+        publish_allocation_metrics = true
+        publish_node_metrics       = true
+        prometheus_metrics         = true
+      }

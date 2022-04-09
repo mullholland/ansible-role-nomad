@@ -1,0 +1,28 @@
+---
+- name: place nomad license
+  ansible.builtin.copy:
+    content: "{{ nomad_license }}"
+    dest: "/etc/nomad.d/nomad.hclic"
+    owner: "{{ nomad_user }}"
+    group: "{{ nomad_group }}"
+    mode: "0400"
+  notify:
+    - restart nomad
+  when:
+    - nomad_license is defined
+
+- name: "create /etc/nomad.d/nomad.hcl"
+  ansible.builtin.template:
+    src: "etc/nomad.d/nomad.hcl.j2"
+    dest: "/etc/nomad.d/nomad.hcl"
+    owner: "{{ nomad_user }}"
+    group: "{{ nomad_group }}"
+    mode: "0640"
+  notify:
+    - restart nomad
+
+- name: start nomad
+  ansible.builtin.service:
+    name: nomad
+    state: started
+    enabled: true

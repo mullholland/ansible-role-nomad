@@ -1,0 +1,59 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    nomad_config_sections:
+      - name: base
+        config: |
+          bind_addr = "{{ nomad_bind_address }}"
+          data_dir  = "{{ nomad_data_path }}"
+          name      = "{{ inventory_hostname }}"
+      - name: logging
+        config: |
+          log_level            = "INFO"
+          log_json             = false
+          log_file             = "{{ nomad_log_path }}/nomad.log"
+          log_rotate_duration  = "24h" # rotate after 24h
+          log_rotate_max_files = "7"   # keep 1 week worth of logs
+      - name: server
+        config: |
+          server {
+            enabled          = true
+            bootstrap_expect = 3  # Self-elect, should be 3 or 5 for production
+              server_join {
+                retry_join = [{% for server in groups['nomad_group'] -%}
+                  "{{ hostvars[server]['inventory_hostname'] }}"{{ ", " if not loop.last else "" }}
+                {%- endfor -%} ]
+                retry_max = 3
+                retry_interval = "15s"
+              }
+          }
+      - name: agent
+        config: |
+          client {
+            enabled = true
+            servers = [ "{{ inventory_hostname}}:4647" ]
+          }
+          # Disable the dangling container cleanup to avoid interaction with other clients
+          plugin "docker" {
+            config {
+              gc {
+                dangling_containers {
+                  enabled = false
+                }
+              }
+            }
+          }
+      - name: telementry
+        config: |
+          telemetry {
+            publish_allocation_metrics = true
+            publish_node_metrics       = true
+            prometheus_metrics         = true
+          }
+
+
+  roles:
+    - role: "ansible-role-nomad"
