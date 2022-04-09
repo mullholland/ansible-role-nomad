@@ -1,3 +1,4 @@
+---
 molecule_exceptions:
   - variation: centos-stream9
     reason: "No hashicorp Repository"
