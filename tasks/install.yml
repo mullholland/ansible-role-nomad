@@ -12,7 +12,6 @@
     group: "{{ nomad_group }}"
     state: directory
   with_items:
-    - "{{ nomad_bin_path }}"
     - "{{ nomad_config_path }}"
     - "{{ nomad_data_path }}"
     - "{{ nomad_log_path }}"
