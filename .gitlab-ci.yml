@@ -37,7 +37,7 @@ linting:
     - if: $CI_COMMIT_REF_NAME == "main"
   parallel:
     matrix:
-      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora34, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
   script:
     - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
 
@@ -52,7 +52,7 @@ linting:
     - if: $CI_COMMIT_REF_NAME == "main"
   parallel:
     matrix:
-      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora34, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
   script:
     - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
 
@@ -67,7 +67,7 @@ linting:
     - if: $CI_COMMIT_REF_NAME == "main"
   parallel:
     matrix:
-      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora34, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
   script:
     - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
 
@@ -82,7 +82,7 @@ linting:
     - if: $CI_COMMIT_REF_NAME == "main"
   parallel:
     matrix:
-      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora34, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
   script:
     - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
 
@@ -97,7 +97,7 @@ linting:
     - if: $CI_COMMIT_REF_NAME == "main"
   parallel:
     matrix:
-      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora34, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
   script:
     - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
 
@@ -112,6 +112,6 @@ linting:
     - if: $CI_COMMIT_REF_NAME == "main"
   parallel:
     matrix:
-      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora34, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, ubi8, fedora35, fedora36, amazonlinux, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
   script:
     - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
