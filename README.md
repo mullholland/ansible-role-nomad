@@ -63,7 +63,7 @@ nomad_config_sections:
     config: |
       client {
         enabled = true
-        servers = [ "{{ inventory_hostname}}:4647" ]
+        servers = [ "{{ inventory_hostname }}:4647" ]
       }
       # Disable the dangling container cleanup to avoid interaction with other clients
       plugin "docker" {
@@ -148,7 +148,6 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 -   [centos7](https://hub.docker.com/r/mullholland/docker-molecule-centos7)
 -   [centos-stream8](https://hub.docker.com/r/mullholland/docker-molecule-centos-stream8)
 -   [ubi8](https://hub.docker.com/r/mullholland/docker-molecule-ubi8)
--   [fedora34](https://hub.docker.com/r/mullholland/docker-molecule-fedora34)
 -   [fedora35](https://hub.docker.com/r/mullholland/docker-molecule-fedora35)
 -   [fedora36](https://hub.docker.com/r/mullholland/docker-molecule-fedora36)
 -   [amazonlinux](https://hub.docker.com/r/mullholland/docker-molecule-amazonlinux)
