@@ -1,5 +1,10 @@
 # [nomad](#nomad)
 
+**IMPORTANT**
+This role will no longer be updated. you can use [robertdebock/ansible-role-nomad](https://github.com/robertdebock/ansible-role-nomad) as an alternative.
+
+---
+
 |GitHub|GitLab|
 |------|------|
 |[![github](https://github.com/mullholland/ansible-role-nomad/workflows/Ansible%20Molecule/badge.svg)](https://github.com/mullholland/ansible-role-nomad/actions)|[![gitlab](https://gitlab.com/mullholland/ansible-role-nomad/badges/main/pipeline.svg)](https://gitlab.com/mullholland/ansible-role-nomad)|
