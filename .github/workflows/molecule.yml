@@ -1,17 +1,12 @@
 ---
 #
-#
 # Ansible managed
 #
-#
 
-name: Molecule
 name: Molecule
 
 on:
   push:
-    tags_ignore:
-      - '*'
     tags_ignore:
       - '*'
   pull_request:
@@ -20,7 +15,6 @@ on:
 
 jobs:
   lint:
-  lint:
     runs-on: ubuntu-20.04
     steps:
       - name: checkout
@@ -28,12 +22,7 @@ jobs:
       - name: ansible-lint
         uses: ansible-community/ansible-lint-action@main
   test:
-        uses: actions/checkout@v4
-      - name: ansible-lint
-        uses: ansible-community/ansible-lint-action@main
-  test:
     needs:
-      - lint
       - lint
     runs-on: ubuntu-20.04
     strategy:
@@ -64,19 +53,6 @@ jobs:
             tag: "bullseye"
     steps:
       - name: checkout
-        uses: actions/checkout@v4
-        with:
-          path: "${{ github.repository }}"
-      # - name: disable apparmor for mysql
-      #   run: sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
-      # - name: parse apparmor for mysql
-      #   run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
-      - name: molecule
-        uses: robertdebock/molecule-action@6.0.1
-        with:
-          namespace: mullholland
-          image: ${{ matrix.config.image }}
-          tag: ${{ matrix.config.tag }}
         uses: actions/checkout@v4
         with:
           path: "${{ github.repository }}"
