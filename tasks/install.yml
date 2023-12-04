@@ -1,10 +1,10 @@
 ---
-- name: Install nomad
+- name: install | Install nomad
   ansible.builtin.package:
     name: "{{ nomad_packages }}"
     state: present
 
-- name: create nomad directories
+- name: install | create nomad directories
   ansible.builtin.file:
     path: "{{ item }}"
     mode: "0750"

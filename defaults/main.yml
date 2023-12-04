@@ -19,7 +19,6 @@ nomad_user: "nomad"
 nomad_group: "nomad"
 
 # # Paths
-nomad_bin_path: "/usr/bin"
 nomad_config_path: "/etc/nomad.d"
 nomad_data_path: "/opt/nomad/data"
 nomad_log_path: "/var/log/nomad"
