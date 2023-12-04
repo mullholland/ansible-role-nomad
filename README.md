@@ -57,7 +57,55 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 
 ## [Role Variables](#role-variables)
 
-The default values for the variables are set in [`defaults/main.yml`](https://github.com/mullholland/ansible-role-nomad/blob/master/defaults/main.yml):
+This example is taken from [`molecule/default/converge.yml`](https://github.com/mullholland/ansible-role-nomad/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
+
+```yaml
+---
+- name: Converge
+  hosts: all
+  become: true
+  gather_facts: true
+  # vars:
+  #   example_var: "value"
+  roles:
+    - role: "mullholland.nomad"
+```
+
+The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/mullholland/ansible-role-nomad/blob/master/molecule/default/prepare.yml):
+
+```yaml
+---
+- name: Prepare
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Debian/Ubuntu | Install support packages for testing
+      package:
+        name:
+          - "iproute2"  # for ansible_default_ipv4.address
+          - "cron"  # for backup cron
+          - "findutils"  # for backup cron
+        state: latest
+      when: ansible_os_family == "Debian"
+
+    - name: RedHat/CentOS | Install support packages for testing
+      package:
+        name:
+          - "iproute"  # for ansible_default_ipv4.address
+          - "cronie"  # for backup cron
+          - "findutils"  # for backup cron
+        state: latest
+      when: ansible_os_family == "RedHat" or ansible_os_family == "Rocky"
+
+  roles:
+    - role: mullholland.repository_hashicorp
+```
+
+
+
+## [Role Variables](#role-variables)
 
 ```yaml
 ---
@@ -160,7 +208,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 |---------|----|
 |[EL](https://hub.docker.com/r/mullholland/enterpriselinux)|all|
 |[Amazon](https://hub.docker.com/r/mullholland/amazonlinux)|Candidate|
-|[Fedora](https://hub.docker.com/r/mullholland/fedora/)|38, 39|
+|[Fedora](https://hub.docker.com/r/mullholland/fedora/)|all|
 |[Ubuntu](https://hub.docker.com/r/mullholland/ubuntu)|all|
 |[Debian](https://hub.docker.com/r/mullholland/debian)|all|
 
