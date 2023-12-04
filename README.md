@@ -199,6 +199,24 @@ This role is a part of many compatible roles. Have a look at [the documentation 
 
 Here is an overview of related roles:
 ![dependencies](https://raw.githubusercontent.com/mullholland/ansible-role-nomad/png/requirements.png "Dependencies")
+## [Requirements](#requirements)
+
+- pip packages listed in [requirements.txt](https://github.com/mullholland/ansible-role-nomad/blob/master/requirements.txt).
+
+## [State of used roles](#state-of-used-roles)
+
+The following roles are used to prepare a system. You can prepare your system in another way.
+
+| Requirement | GitHub | GitLab |
+|-------------|--------|--------|
+|[mullholland.repository_hashicorp](https://galaxy.ansible.com/mullholland/repository_hashicorp)|[![Build Status GitHub](https://github.com/mullholland/ansible-role-repository_hashicorp/workflows/Ansible%20Molecule/badge.svg)](https://github.com/mullholland/ansible-role-repository_hashicorp/actions)|[![Build Status GitLab](https://gitlab.com/opensourceunicorn/ansible-role-repository_hashicorp/badges/master/pipeline.svg)](https://gitlab.com/opensourceunicorn/ansible-role-repository_hashicorp)|
+
+## [Context](#context)
+
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://mullholland.net) for further information.
+
+Here is an overview of related roles:
+![dependencies](https://raw.githubusercontent.com/mullholland/ansible-role-nomad/png/requirements.png "Dependencies")
 
 ## [Compatibility](#compatibility)
 
@@ -208,7 +226,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 |---------|----|
 |[EL](https://hub.docker.com/r/mullholland/enterpriselinux)|all|
 |[Amazon](https://hub.docker.com/r/mullholland/amazonlinux)|Candidate|
-|[Fedora](https://hub.docker.com/r/mullholland/fedora/)|all|
+|[Fedora](https://hub.docker.com/r/mullholland/fedora/)|38, 39|
 |[Ubuntu](https://hub.docker.com/r/mullholland/ubuntu)|all|
 |[Debian](https://hub.docker.com/r/mullholland/debian)|all|
 
@@ -217,13 +235,19 @@ The minimum version of Ansible required is 2.10, tests have been done to:
 - The previous version.
 - The current version.
 - The development version.
+- The previous version.
+- The current version.
+- The development version.
 
+If you find issues, please register them in [GitHub](https://github.com/mullholland/ansible-role-nomad/issues).
 If you find issues, please register them in [GitHub](https://github.com/mullholland/ansible-role-nomad/issues).
 
 ## [License](#license)
 
 [MIT](https://github.com/mullholland/ansible-role-nomad/blob/master/LICENSE).
+[MIT](https://github.com/mullholland/ansible-role-nomad/blob/master/LICENSE).
 
 ## [Author Information](#author-information)
 
+[Mullholland](https://mullholland.net)
 [Mullholland](https://mullholland.net)
